@@ -1,0 +1,14 @@
+# Individual Report - Kieu Duc Long
+
+Trong bài Day 09, phần đóng góp chính của em là xây dựng lời giải multi-agent có thể chạy end-to-end trong thư mục `Lab_Assignment/`. Mục tiêu của phần này là biến yêu cầu từ mô hình single-agent/RAG thành kiến trúc Supervisor -> Workers -> Synthesis, đồng thời tạo trace và artifact đúng format để giảng viên có thể kiểm tra trực tiếp.
+
+Em phụ trách thiết kế luồng supervisor trong `graph.py`. File này nhận câu hỏi, phân loại intent bằng rule deterministic, sau đó gọi các worker thật thay vì trả lời mẫu. Với câu hỏi P1/SLA hoặc incident, supervisor gọi `retrieval_worker` và `synthesis_worker`. Với câu hỏi refund, access, contractor, emergency hoặc exception, supervisor gọi thêm `policy_tool_worker`. Với câu nhiều bước như gq09, supervisor gọi cả retrieval và policy để trả lời đồng thời P1 escalation và Level 2 temporary contractor access. Mỗi output đều có `supervisor_route`, `route_reason`, `workers_called`, `mcp_tools_used`, `confidence` và `hitl_triggered`.
+
+Em cũng triển khai các worker chính. `workers/retrieval.py` đọc tài liệu markdown trong `data/docs/`, dùng keyword scoring để tìm đúng nguồn như `p1_sla.md`, `refund_policy.md`, `access_control_sop.md`, `hr_remote_work.md` và `password_security_faq.md`. `workers/policy_tool.py` xử lý các case có điều kiện như Flash Sale manufacturer defect, digital product refund exception, Level 3 emergency access, contractor Level 2 temporary access và store credit. Worker này gọi tool thật từ `mcp_server.py`, đặc biệt là `check_access_permission` cho access cases và `search_kb` cho refund cases. `workers/synthesis.py` tổng hợp câu trả lời cuối, luôn cite source và dùng abstain khi không có bằng chứng.
+
+Phần kiểm thử và chấm điểm được thực hiện trong `eval_trace.py`. Script này chạy 15 câu test, trong đó có 10 grading questions `gq01` đến `gq10`. Khi chạy `python eval_trace.py --grading`, hệ thống tạo `artifacts/grading_run.jsonl` đúng 10 dòng và sinh trace riêng trong `artifacts/traces/`. Các trace này chứng minh route thật, worker thật và MCP tool thật đã được gọi.
+
+Vấn đề quan trọng nhất là tránh hallucination. Với gq07, câu hỏi về mức phạt tài chính cho P1 không có trong tài liệu nội bộ. Vì vậy synthesis trả lời rõ rằng không có thông tin trong tài liệu được cung cấp để xác định, thay vì tự bịa số tiền. Một vấn đề khác là thiếu API key có thể làm hệ thống crash nếu phụ thuộc LLM. Em giải quyết bằng cách dùng rule-based fallback hoàn toàn deterministic, nên toàn bộ pipeline vẫn chạy được mà không cần API key.
+
+Kết quả cuối cùng là hệ thống có code chạy độc lập, tài liệu kiến trúc, contract worker, report nhóm, report cá nhân và artifact grading. Cách tách module giúp dễ kiểm tra từng phần bằng `python workers/retrieval.py`, `python workers/policy_tool.py`, `python workers/synthesis.py`, `python graph.py` và `python eval_trace.py --grading`.
+

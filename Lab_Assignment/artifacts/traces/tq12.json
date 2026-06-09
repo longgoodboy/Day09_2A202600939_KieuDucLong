@@ -1,0 +1,89 @@
+{
+  "record": {
+    "id": "tq12",
+    "question": "Access Level 2 cho contractor emergency hết hạn khi nào?",
+    "answer": "- Level 2 approval path: Business Owner, Security; final approver: Security; expiry: 24 hours for emergency temporary contractor access.\n- Nguồn access_control_sop.md: # Access Control SOP - Level 2 access can be granted temporarily to contractors only with a business owner approval and Security approval. - Emergency Level 2 temporary contractor access expires after 24 hours and requires post-review by Security. - Level 3 emergency access requires two approvers: the system owner and \n- Nguồn hr_remote_work.md: # HR Remote Work Policy - Probation employees may request remote work only after manager approval. - During probation, remote work is limited to 2 days per week unless HR approves an exception. - The employee must keep daily check-ins and remain reachable during core hours. - Sources: HR Remote Work Policy.\n- Sources: access_control_sop.md, hr_remote_work.md",
+    "sources": [
+      "access_control_sop.md",
+      "hr_remote_work.md"
+    ],
+    "supervisor_route": "policy_tool_worker",
+    "route_reason": "task contains refund/access/exception/contractor policy keywords",
+    "workers_called": [
+      "retrieval_worker",
+      "policy_tool_worker",
+      "synthesis_worker"
+    ],
+    "mcp_tools_used": [
+      "check_access_permission"
+    ],
+    "confidence": 0.95,
+    "hitl_triggered": false,
+    "timestamp": "2026-06-09T12:46:14.773447+00:00"
+  },
+  "trace": {
+    "timestamp": "2026-06-09T12:46:14.773447+00:00",
+    "retrieval": {
+      "worker": "retrieval_worker",
+      "query_tokens": [
+        "2",
+        "access",
+        "cho",
+        "contractor",
+        "emergency",
+        "h",
+        "khi",
+        "level",
+        "n",
+        "o",
+        "t"
+      ],
+      "matches": [
+        {
+          "source": "access_control_sop.md",
+          "score": 20
+        },
+        {
+          "source": "hr_remote_work.md",
+          "score": 1
+        }
+      ]
+    },
+    "policy": {
+      "worker": "policy_tool_worker",
+      "mcp_tool_called": [
+        "check_access_permission"
+      ],
+      "mcp_result": [
+        {
+          "tool_name": "check_access_permission",
+          "input_summary": "role=contractor, level=2, emergency=True, contractor=True",
+          "result": {
+            "role": "contractor",
+            "level": "Level 2",
+            "emergency": true,
+            "contractor": true,
+            "approval_path": [
+              "Business Owner",
+              "Security"
+            ],
+            "final_approver": "Security",
+            "expiry": "24 hours for emergency temporary contractor access"
+          },
+          "sources": [
+            "access_control_sop.md"
+          ]
+        }
+      ]
+    },
+    "route": {
+      "route": "policy_tool_worker",
+      "workers": [
+        "retrieval_worker",
+        "policy_tool_worker",
+        "synthesis_worker"
+      ],
+      "reason": "task contains refund/access/exception/contractor policy keywords"
+    }
+  }
+}

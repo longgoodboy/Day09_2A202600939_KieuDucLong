@@ -1,0 +1,117 @@
+{
+  "record": {
+    "id": "gq09",
+    "question": "P1 escalation sau 10 phút và contractor cần Level 2 temporary access thì làm gì?",
+    "answer": "- Level 2 approval path: Business Owner, Security; final approver: Security; expiry: Temporary access window approved by Security. P1 ticket requires acknowledgement within 10 minutes and updates every 15 minutes.\n- Nguồn access_control_sop.md: # Access Control SOP - Level 2 access can be granted temporarily to contractors only with a business owner approval and Security approval. - Emergency Level 2 temporary contractor access expires after 24 hours and requires post-review by Security. - Level 3 emergency access requires two approvers: the system owner and \n- Nguồn p1_sla.md: # P1 SLA and Escalation SOP - P1 incidents must be announced first in the incident Slack channel `#ops-p1` and the on-call phone bridge. - The first customer-impact notification must be sent within 5 minutes after P1 confirmation. - If the primary on-call does not acknowledge within 10 minutes, escalate to the Incident\n- Sources: access_control_sop.md, p1_sla.md, hr_remote_work.md",
+    "sources": [
+      "access_control_sop.md",
+      "p1_sla.md",
+      "hr_remote_work.md"
+    ],
+    "supervisor_route": "multi_worker",
+    "route_reason": "task combines P1/ticket/escalation keywords with policy/access keywords",
+    "workers_called": [
+      "retrieval_worker",
+      "policy_tool_worker",
+      "synthesis_worker"
+    ],
+    "mcp_tools_used": [
+      "check_access_permission",
+      "get_ticket_info"
+    ],
+    "confidence": 0.95,
+    "hitl_triggered": false,
+    "timestamp": "2026-06-09T12:51:57.074890+00:00"
+  },
+  "trace": {
+    "timestamp": "2026-06-09T12:51:57.074890+00:00",
+    "retrieval": {
+      "worker": "retrieval_worker",
+      "query_tokens": [
+        "10",
+        "2",
+        "access",
+        "c",
+        "contractor",
+        "escalation",
+        "g",
+        "l",
+        "level",
+        "m",
+        "n",
+        "p1",
+        "ph",
+        "sau",
+        "t",
+        "temporary",
+        "th",
+        "v"
+      ],
+      "matches": [
+        {
+          "source": "access_control_sop.md",
+          "score": 20
+        },
+        {
+          "source": "p1_sla.md",
+          "score": 12
+        },
+        {
+          "source": "hr_remote_work.md",
+          "score": 1
+        }
+      ]
+    },
+    "policy": {
+      "worker": "policy_tool_worker",
+      "mcp_tool_called": [
+        "check_access_permission",
+        "get_ticket_info"
+      ],
+      "mcp_result": [
+        {
+          "tool_name": "check_access_permission",
+          "input_summary": "role=contractor, level=2, emergency=False, contractor=True",
+          "result": {
+            "role": "contractor",
+            "level": "Level 2",
+            "emergency": false,
+            "contractor": true,
+            "approval_path": [
+              "Business Owner",
+              "Security"
+            ],
+            "final_approver": "Security",
+            "expiry": "Temporary access window approved by Security"
+          },
+          "sources": [
+            "access_control_sop.md"
+          ]
+        },
+        {
+          "tool_name": "get_ticket_info",
+          "input_summary": "ticket_id=None, priority=P1",
+          "result": {
+            "ticket_id": "MOCK-P1-001",
+            "priority": "P1",
+            "ack_deadline_minutes": 10,
+            "update_interval_minutes": 15,
+            "owner": "Incident Commander"
+          },
+          "sources": [
+            "p1_sla.md"
+          ]
+        }
+      ]
+    },
+    "route": {
+      "route": "multi_worker",
+      "workers": [
+        "retrieval_worker",
+        "policy_tool_worker",
+        "synthesis_worker"
+      ],
+      "reason": "task combines P1/ticket/escalation keywords with policy/access keywords"
+    }
+  }
+}

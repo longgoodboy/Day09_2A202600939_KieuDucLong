@@ -1,0 +1,84 @@
+{
+  "record": {
+    "id": "gq03",
+    "question": "Level 3 emergency access cần approver nào và ai final approver?",
+    "answer": "- Level 3 approval path: System Owner, Security Manager; final approver: Security Manager; expiry: Emergency duration only; revocation time must be logged.\n- Nguồn access_control_sop.md: # Access Control SOP - Level 2 access can be granted temporarily to contractors only with a business owner approval and Security approval. - Emergency Level 2 temporary contractor access expires after 24 hours and requires post-review by Security. - Level 3 emergency access requires two approvers: the system owner and \n- Sources: access_control_sop.md",
+    "sources": [
+      "access_control_sop.md"
+    ],
+    "supervisor_route": "policy_tool_worker",
+    "route_reason": "task contains refund/access/exception/contractor policy keywords",
+    "workers_called": [
+      "retrieval_worker",
+      "policy_tool_worker",
+      "synthesis_worker"
+    ],
+    "mcp_tools_used": [
+      "check_access_permission"
+    ],
+    "confidence": 0.95,
+    "hitl_triggered": false,
+    "timestamp": "2026-06-09T12:51:57.055315+00:00"
+  },
+  "trace": {
+    "timestamp": "2026-06-09T12:51:57.055315+00:00",
+    "retrieval": {
+      "worker": "retrieval_worker",
+      "query_tokens": [
+        "3",
+        "access",
+        "ai",
+        "approver",
+        "c",
+        "emergency",
+        "final",
+        "level",
+        "n",
+        "o",
+        "v"
+      ],
+      "matches": [
+        {
+          "source": "access_control_sop.md",
+          "score": 21
+        }
+      ]
+    },
+    "policy": {
+      "worker": "policy_tool_worker",
+      "mcp_tool_called": [
+        "check_access_permission"
+      ],
+      "mcp_result": [
+        {
+          "tool_name": "check_access_permission",
+          "input_summary": "role=employee, level=3, emergency=True, contractor=False",
+          "result": {
+            "role": "employee",
+            "level": "Level 3",
+            "emergency": true,
+            "contractor": false,
+            "approval_path": [
+              "System Owner",
+              "Security Manager"
+            ],
+            "final_approver": "Security Manager",
+            "expiry": "Emergency duration only; revocation time must be logged"
+          },
+          "sources": [
+            "access_control_sop.md"
+          ]
+        }
+      ]
+    },
+    "route": {
+      "route": "policy_tool_worker",
+      "workers": [
+        "retrieval_worker",
+        "policy_tool_worker",
+        "synthesis_worker"
+      ],
+      "reason": "task contains refund/access/exception/contractor policy keywords"
+    }
+  }
+}

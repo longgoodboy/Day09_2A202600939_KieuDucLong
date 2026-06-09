@@ -1,0 +1,96 @@
+{
+  "record": {
+    "id": "gq02",
+    "question": "Refund policy theo ngày mua áp dụng như thế nào cho sản phẩm eligible?",
+    "answer": "- Standard eligible physical-product refunds are allowed within 7 days.\n- Nguồn refund_policy.md: # Refund and Return Policy - Standard refunds are allowed within 7 days for eligible physical products. - Flash Sale items normally are not refundable, except when a manufacturer defect is verified within 7 days. - Digital products are not refunded after activation, except duplicate charge, failed delivery, or verified\n- Nguồn hr_remote_work.md: # HR Remote Work Policy - Probation employees may request remote work only after manager approval. - During probation, remote work is limited to 2 days per week unless HR approves an exception. - The employee must keep daily check-ins and remain reachable during core hours. - Sources: HR Remote Work Policy.\n- Sources: refund_policy.md, hr_remote_work.md",
+    "sources": [
+      "refund_policy.md",
+      "hr_remote_work.md"
+    ],
+    "supervisor_route": "policy_tool_worker",
+    "route_reason": "task contains refund/access/exception/contractor policy keywords",
+    "workers_called": [
+      "retrieval_worker",
+      "policy_tool_worker",
+      "synthesis_worker"
+    ],
+    "mcp_tools_used": [
+      "search_kb"
+    ],
+    "confidence": 0.88,
+    "hitl_triggered": false,
+    "timestamp": "2026-06-09T12:51:57.045546+00:00"
+  },
+  "trace": {
+    "timestamp": "2026-06-09T12:51:57.045546+00:00",
+    "retrieval": {
+      "worker": "retrieval_worker",
+      "query_tokens": [
+        "cho",
+        "d",
+        "eligible",
+        "m",
+        "mua",
+        "n",
+        "ng",
+        "nh",
+        "o",
+        "p",
+        "ph",
+        "policy",
+        "refund",
+        "s",
+        "th",
+        "theo",
+        "y"
+      ],
+      "matches": [
+        {
+          "source": "refund_policy.md",
+          "score": 6
+        },
+        {
+          "source": "hr_remote_work.md",
+          "score": 1
+        }
+      ]
+    },
+    "policy": {
+      "worker": "policy_tool_worker",
+      "mcp_tool_called": [
+        "search_kb"
+      ],
+      "mcp_result": [
+        {
+          "tool_name": "search_kb",
+          "input_summary": "Refund policy theo ngày mua áp dụng như thế nào cho sản phẩm eligible?",
+          "result": [
+            {
+              "source": "refund_policy.md",
+              "text": "# Refund and Return Policy\n\n- Standard refunds are allowed within 7 days for eligible physical products.\n- Flash Sale items normally are not refundable, except when a manufacturer defect is verified within 7 days.\n- Digital products are not refunded after activation, except duplicate charge, failed delivery, or verified technical defect.\n- Store credit for approved non-cash compensation is 80% of the original paid amount.\n- For policy version conflicts, use the policy active on the purchase date.\n- Sources: Refund and Return Policy.\n",
+              "score": 6
+            },
+            {
+              "source": "hr_remote_work.md",
+              "text": "# HR Remote Work Policy\n\n- Probation employees may request remote work only after manager approval.\n- During probation, remote work is limited to 2 days per week unless HR approves an exception.\n- The employee must keep daily check-ins and remain reachable during core hours.\n- Sources: HR Remote Work Policy.\n",
+              "score": 1
+            }
+          ],
+          "sources": [
+            "refund_policy.md",
+            "hr_remote_work.md"
+          ]
+        }
+      ]
+    },
+    "route": {
+      "route": "policy_tool_worker",
+      "workers": [
+        "retrieval_worker",
+        "policy_tool_worker",
+        "synthesis_worker"
+      ],
+      "reason": "task contains refund/access/exception/contractor policy keywords"
+    }
+  }
+}

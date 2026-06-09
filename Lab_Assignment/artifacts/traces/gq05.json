@@ -1,0 +1,57 @@
+{
+  "record": {
+    "id": "gq05",
+    "question": "P1 escalation sau 10 phút không ai acknowledge thì làm gì?",
+    "answer": "- Nguồn p1_sla.md: # P1 SLA and Escalation SOP - P1 incidents must be announced first in the incident Slack channel `#ops-p1` and the on-call phone bridge. - The first customer-impact notification must be sent within 5 minutes after P1 confirmation. - If the primary on-call does not acknowledge within 10 minutes, escalate to the Incident\n- Sources: p1_sla.md",
+    "sources": [
+      "p1_sla.md"
+    ],
+    "supervisor_route": "retrieval_worker",
+    "route_reason": "task contains internal policy retrieval keywords",
+    "workers_called": [
+      "retrieval_worker",
+      "synthesis_worker"
+    ],
+    "mcp_tools_used": [],
+    "confidence": 0.95,
+    "hitl_triggered": false,
+    "timestamp": "2026-06-09T12:51:57.062315+00:00"
+  },
+  "trace": {
+    "timestamp": "2026-06-09T12:51:57.062315+00:00",
+    "retrieval": {
+      "worker": "retrieval_worker",
+      "query_tokens": [
+        "10",
+        "acknowledge",
+        "ai",
+        "escalation",
+        "g",
+        "kh",
+        "l",
+        "m",
+        "ng",
+        "p1",
+        "ph",
+        "sau",
+        "t",
+        "th"
+      ],
+      "matches": [
+        {
+          "source": "p1_sla.md",
+          "score": 13
+        }
+      ]
+    },
+    "policy": null,
+    "route": {
+      "route": "retrieval_worker",
+      "workers": [
+        "retrieval_worker",
+        "synthesis_worker"
+      ],
+      "reason": "task contains internal policy retrieval keywords"
+    }
+  }
+}

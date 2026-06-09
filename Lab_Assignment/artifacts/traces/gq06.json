@@ -1,0 +1,60 @@
+{
+  "record": {
+    "id": "gq06",
+    "question": "Nhân viên probation có được remote work không và giới hạn bao nhiêu ngày?",
+    "answer": "- Nguồn hr_remote_work.md: # HR Remote Work Policy - Probation employees may request remote work only after manager approval. - During probation, remote work is limited to 2 days per week unless HR approves an exception. - The employee must keep daily check-ins and remain reachable during core hours. - Sources: HR Remote Work Policy.\n- Sources: hr_remote_work.md",
+    "sources": [
+      "hr_remote_work.md"
+    ],
+    "supervisor_route": "retrieval_worker",
+    "route_reason": "task contains internal policy retrieval keywords",
+    "workers_called": [
+      "retrieval_worker",
+      "synthesis_worker"
+    ],
+    "mcp_tools_used": [],
+    "confidence": 0.95,
+    "hitl_triggered": false,
+    "timestamp": "2026-06-09T12:51:57.065313+00:00"
+  },
+  "trace": {
+    "timestamp": "2026-06-09T12:51:57.065313+00:00",
+    "retrieval": {
+      "worker": "retrieval_worker",
+      "query_tokens": [
+        "bao",
+        "c",
+        "gi",
+        "h",
+        "i",
+        "kh",
+        "n",
+        "ng",
+        "nh",
+        "nhi",
+        "probation",
+        "remote",
+        "u",
+        "v",
+        "vi",
+        "work",
+        "y"
+      ],
+      "matches": [
+        {
+          "source": "hr_remote_work.md",
+          "score": 12
+        }
+      ]
+    },
+    "policy": null,
+    "route": {
+      "route": "retrieval_worker",
+      "workers": [
+        "retrieval_worker",
+        "synthesis_worker"
+      ],
+      "reason": "task contains internal policy retrieval keywords"
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "record": {
+    "id": "gq07",
+    "question": "Mức phạt tài chính cho P1 là bao nhiêu?",
+    "answer": "Không có thông tin trong tài liệu nội bộ được cung cấp để xác định câu hỏi: Mức phạt tài chính cho P1 là bao nhiêu?.",
+    "sources": [],
+    "supervisor_route": "abstain",
+    "route_reason": "task asks for financial penalty information that is not covered by provided internal policy documents",
+    "workers_called": [
+      "retrieval_worker",
+      "synthesis_worker"
+    ],
+    "mcp_tools_used": [],
+    "confidence": 0.0,
+    "hitl_triggered": true,
+    "timestamp": "2026-06-09T12:51:57.068426+00:00"
+  },
+  "trace": {
+    "timestamp": "2026-06-09T12:51:57.068426+00:00",
+    "retrieval": {
+      "worker": "retrieval_worker",
+      "forced_abstain": true
+    },
+    "policy": null,
+    "route": {
+      "route": "abstain",
+      "workers": [
+        "retrieval_worker",
+        "synthesis_worker"
+      ],
+      "reason": "task asks for financial penalty information that is not covered by provided internal policy documents"
+    }
+  }
+}

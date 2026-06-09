@@ -1,0 +1,50 @@
+workers:
+  retrieval_worker:
+    input:
+      question: string
+      context: optional object with docs_dir
+    output:
+      chunks: list of {source, text, score}
+      sources: list of markdown filenames
+      confidence: float from 0 to 1
+      trace: match diagnostics
+    failure_behavior: Return empty chunks, empty sources, and low confidence so synthesis abstains.
+  policy_tool_worker:
+    input:
+      question: string
+      context: optional retrieval result
+    output:
+      policy_result: deterministic policy explanation
+      decision: policy_rule_applied or no_policy_match
+      sources: list of source filenames
+      mcp_tools_used: list of MCP tool names
+      confidence: float from 0 to 1
+      trace: MCP calls and results
+    failure_behavior: Return no_policy_match with low confidence.
+  synthesis_worker:
+    input:
+      question: string
+      retrieval_result: retrieval worker output
+      policy_result: optional policy worker output
+    output:
+      final_answer: cited answer or abstain message
+      sources: list of source filenames
+      confidence: float from 0 to 1
+    failure_behavior: Abstain when evidence is missing or confidence is too low.
+mcp_tools:
+  search_kb:
+    input: query string
+    output: matching chunks and sources
+  get_ticket_info:
+    input: ticket_id or priority
+    output: mock P1 ticket SLA details
+  check_access_permission:
+    input: role, level, emergency, contractor
+    output: approval path, final approver, expiry
+  create_ticket:
+    input: title, priority, description
+    output: mock ticket creation result
+confidence_semantics:
+  high: 0.8 to 0.95 when policy rule and source match
+  medium: 0.35 to 0.79 when retrieval evidence exists
+  low: below 0.2 when synthesis must abstain

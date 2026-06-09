@@ -1,0 +1,81 @@
+{
+  "record": {
+    "id": "gq10",
+    "question": "Flash Sale item bị manufacturer defect trong 7 ngày có được refund không?",
+    "answer": "- Flash Sale normally blocks refunds, but verified manufacturer defect within 7 days is an explicit refund exception.\n- Nguồn refund_policy.md: # Refund and Return Policy - Standard refunds are allowed within 7 days for eligible physical products. - Flash Sale items normally are not refundable, except when a manufacturer defect is verified within 7 days. - Digital products are not refunded after activation, except duplicate charge, failed delivery, or verified\n- Sources: refund_policy.md",
+    "sources": [
+      "refund_policy.md"
+    ],
+    "supervisor_route": "policy_tool_worker",
+    "route_reason": "task contains refund/access/exception/contractor policy keywords",
+    "workers_called": [
+      "retrieval_worker",
+      "policy_tool_worker",
+      "synthesis_worker"
+    ],
+    "mcp_tools_used": [
+      "search_kb"
+    ],
+    "confidence": 0.95,
+    "hitl_triggered": false,
+    "timestamp": "2026-06-09T12:51:57.078891+00:00"
+  },
+  "trace": {
+    "timestamp": "2026-06-09T12:51:57.078891+00:00",
+    "retrieval": {
+      "worker": "retrieval_worker",
+      "query_tokens": [
+        "7",
+        "b",
+        "c",
+        "defect",
+        "flash",
+        "item",
+        "kh",
+        "manufacturer",
+        "ng",
+        "refund",
+        "sale",
+        "trong",
+        "y"
+      ],
+      "matches": [
+        {
+          "source": "refund_policy.md",
+          "score": 21
+        }
+      ]
+    },
+    "policy": {
+      "worker": "policy_tool_worker",
+      "mcp_tool_called": [
+        "search_kb"
+      ],
+      "mcp_result": [
+        {
+          "tool_name": "search_kb",
+          "input_summary": "Flash Sale item bị manufacturer defect trong 7 ngày có được refund không?",
+          "result": [
+            {
+              "source": "refund_policy.md",
+              "text": "# Refund and Return Policy\n\n- Standard refunds are allowed within 7 days for eligible physical products.\n- Flash Sale items normally are not refundable, except when a manufacturer defect is verified within 7 days.\n- Digital products are not refunded after activation, except duplicate charge, failed delivery, or verified technical defect.\n- Store credit for approved non-cash compensation is 80% of the original paid amount.\n- For policy version conflicts, use the policy active on the purchase date.\n- Sources: Refund and Return Policy.\n",
+              "score": 21
+            }
+          ],
+          "sources": [
+            "refund_policy.md"
+          ]
+        }
+      ]
+    },
+    "route": {
+      "route": "policy_tool_worker",
+      "workers": [
+        "retrieval_worker",
+        "policy_tool_worker",
+        "synthesis_worker"
+      ],
+      "reason": "task contains refund/access/exception/contractor policy keywords"
+    }
+  }
+}

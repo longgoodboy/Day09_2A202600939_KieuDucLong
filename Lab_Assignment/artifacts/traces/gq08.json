@@ -1,0 +1,58 @@
+{
+  "record": {
+    "id": "gq08",
+    "question": "Password phải đổi sau bao nhiêu ngày và cảnh báo trước bao nhiêu ngày?",
+    "answer": "- Nguồn password_security_faq.md: # Password Security FAQ - Employees must rotate passwords every 90 days. - The system sends a password change warning 14 days before expiration. - Passwords must not be reused for the previous 5 password cycles. - Suspected compromise requires immediate reset and Security notification. - Sources: Password Security FAQ.\n- Sources: password_security_faq.md",
+    "sources": [
+      "password_security_faq.md"
+    ],
+    "supervisor_route": "retrieval_worker",
+    "route_reason": "task contains internal policy retrieval keywords",
+    "workers_called": [
+      "retrieval_worker",
+      "synthesis_worker"
+    ],
+    "mcp_tools_used": [],
+    "confidence": 0.33,
+    "hitl_triggered": false,
+    "timestamp": "2026-06-09T12:51:57.071887+00:00"
+  },
+  "trace": {
+    "timestamp": "2026-06-09T12:51:57.071887+00:00",
+    "retrieval": {
+      "worker": "retrieval_worker",
+      "query_tokens": [
+        "b",
+        "bao",
+        "c",
+        "i",
+        "ng",
+        "nh",
+        "nhi",
+        "o",
+        "password",
+        "ph",
+        "sau",
+        "tr",
+        "u",
+        "v",
+        "y"
+      ],
+      "matches": [
+        {
+          "source": "password_security_faq.md",
+          "score": 4
+        }
+      ]
+    },
+    "policy": null,
+    "route": {
+      "route": "retrieval_worker",
+      "workers": [
+        "retrieval_worker",
+        "synthesis_worker"
+      ],
+      "reason": "task contains internal policy retrieval keywords"
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "record": {
+    "id": "tq15",
+    "question": "Security suspected compromise password làm gì?",
+    "answer": "- Nguồn password_security_faq.md: # Password Security FAQ - Employees must rotate passwords every 90 days. - The system sends a password change warning 14 days before expiration. - Passwords must not be reused for the previous 5 password cycles. - Suspected compromise requires immediate reset and Security notification. - Sources: Password Security FAQ.\n- Nguồn access_control_sop.md: # Access Control SOP - Level 2 access can be granted temporarily to contractors only with a business owner approval and Security approval. - Emergency Level 2 temporary contractor access expires after 24 hours and requires post-review by Security. - Level 3 emergency access requires two approvers: the system owner and \n- Sources: password_security_faq.md, access_control_sop.md",
+    "sources": [
+      "password_security_faq.md",
+      "access_control_sop.md"
+    ],
+    "supervisor_route": "retrieval_worker",
+    "route_reason": "task contains internal policy retrieval keywords",
+    "workers_called": [
+      "retrieval_worker",
+      "synthesis_worker"
+    ],
+    "mcp_tools_used": [],
+    "confidence": 0.83,
+    "hitl_triggered": false,
+    "timestamp": "2026-06-09T12:46:14.779447+00:00"
+  },
+  "trace": {
+    "timestamp": "2026-06-09T12:46:14.779447+00:00",
+    "retrieval": {
+      "worker": "retrieval_worker",
+      "query_tokens": [
+        "compromise",
+        "g",
+        "l",
+        "m",
+        "password",
+        "security",
+        "suspected"
+      ],
+      "matches": [
+        {
+          "source": "password_security_faq.md",
+          "score": 10
+        },
+        {
+          "source": "access_control_sop.md",
+          "score": 4
+        }
+      ]
+    },
+    "policy": null,
+    "route": {
+      "route": "retrieval_worker",
+      "workers": [
+        "retrieval_worker",
+        "synthesis_worker"
+      ],
+      "reason": "task contains internal policy retrieval keywords"
+    }
+  }
+}
