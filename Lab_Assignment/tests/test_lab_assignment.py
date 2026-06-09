@@ -1,6 +1,10 @@
 import json
+import sys
 import unittest
 from pathlib import Path
+
+LAB_DIR = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(LAB_DIR))
 
 import graph
 from workers import retrieval, policy_tool, synthesis
