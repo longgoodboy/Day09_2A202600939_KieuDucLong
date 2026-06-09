@@ -1,0 +1,88 @@
+[
+  {
+    "id": "gq01",
+    "question": "P1 incident luc 22:47 thi ai nhan thong bao, kenh nao, deadline escalation la gi?",
+    "expected_topics": [
+      "P1",
+      "notification",
+      "escalation"
+    ]
+  },
+  {
+    "id": "gq02",
+    "question": "Don hang ngay 31/01/2026 refund ngay 07/02/2026 thi policy version nao ap dung va co refund khong?",
+    "expected_topics": [
+      "temporal refund",
+      "purchase date"
+    ]
+  },
+  {
+    "id": "gq03",
+    "question": "Level 3 emergency access can bao nhieu approver va final approver la ai?",
+    "expected_topics": [
+      "Level 3",
+      "emergency",
+      "final approver"
+    ]
+  },
+  {
+    "id": "gq04",
+    "question": "Store credit bang bao nhieu phan tram tien goc?",
+    "expected_topics": [
+      "store credit",
+      "percentage"
+    ]
+  },
+  {
+    "id": "gq05",
+    "question": "P1 khong phan hoi sau 10 phut thi escalation the nao?",
+    "expected_topics": [
+      "P1",
+      "10 minutes",
+      "escalation"
+    ]
+  },
+  {
+    "id": "gq06",
+    "question": "Nhan vien thu viec muon remote thi dieu kien la gi?",
+    "expected_topics": [
+      "probation",
+      "remote work"
+    ]
+  },
+  {
+    "id": "gq07",
+    "question": "Muc phat tai chinh khi vi pham SLA P1 la bao nhieu?",
+    "expected_topics": [
+      "abstain",
+      "no financial penalty source"
+    ]
+  },
+  {
+    "id": "gq08",
+    "question": "Password doi sau bao nhieu ngay va canh bao truoc bao nhieu ngay?",
+    "expected_topics": [
+      "password",
+      "rotation",
+      "warning"
+    ]
+  },
+  {
+    "id": "gq09",
+    "question": "P1 luc 2am va Level 2 temporary contractor access thi xu ly the nao?",
+    "expected_topics": [
+      "multi-hop",
+      "P1",
+      "contractor access"
+    ]
+  },
+  {
+    "id": "gq10",
+    "question": "Flash Sale bi loi nha san xuat trong 7 ngay co refund khong?",
+    "expected_topics": [
+      "Flash Sale",
+      "manufacturer defect",
+      "exception"
+    ]
+  }
+]

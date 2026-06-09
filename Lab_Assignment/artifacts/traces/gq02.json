@@ -19,10 +19,10 @@
     ],
     "confidence": 0.88,
     "hitl_triggered": false,
-    "timestamp": "2026-06-09T12:51:57.045546+00:00"
+    "timestamp": "2026-06-09T16:31:29.031889+00:00"
   },
   "trace": {
-    "timestamp": "2026-06-09T12:51:57.045546+00:00",
+    "timestamp": "2026-06-09T16:31:29.031889+00:00",
     "retrieval": {
       "worker": "retrieval_worker",
       "query_tokens": [

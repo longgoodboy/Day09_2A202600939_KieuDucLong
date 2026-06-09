@@ -51,7 +51,7 @@ class LabAssignmentTests(unittest.TestCase):
     def test_eval_grading_jsonl_exists_and_valid(self):
         import eval_trace
         eval_trace.run_grading()
-        path = Path("artifacts/grading_run.jsonl")
+        path = LAB_DIR / "artifacts" / "grading_run.jsonl"
         self.assertTrue(path.exists())
         rows = [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines()]
         self.assertEqual(len(rows), 10)

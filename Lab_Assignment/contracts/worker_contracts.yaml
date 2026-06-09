@@ -1,5 +1,27 @@
+supervisor:
+  actual_implementation:
+    status: "implemented"
+    file: "graph.py"
+    tested_by:
+      - "python graph.py"
+      - "python eval_trace.py --grading"
+  output_fields:
+    - final_answer
+    - retrieved_sources
+    - supervisor_route
+    - route_reason
+    - workers_called
+    - mcp_tools_used
+    - confidence
+    - hitl_triggered
 workers:
   retrieval_worker:
+    actual_implementation:
+      status: "implemented"
+      file: "workers/retrieval.py"
+      tested_by:
+        - "python workers/retrieval.py"
+        - "python -m unittest discover -s tests -v"
     input:
       question: string
       context: optional object with docs_dir
@@ -10,6 +32,12 @@ workers:
       trace: match diagnostics
     failure_behavior: Return empty chunks, empty sources, and low confidence so synthesis abstains.
   policy_tool_worker:
+    actual_implementation:
+      status: "implemented"
+      file: "workers/policy_tool.py"
+      tested_by:
+        - "python workers/policy_tool.py"
+        - "python eval_trace.py --grading"
     input:
       question: string
       context: optional retrieval result
@@ -22,6 +50,12 @@ workers:
       trace: MCP calls and results
     failure_behavior: Return no_policy_match with low confidence.
   synthesis_worker:
+    actual_implementation:
+      status: "implemented"
+      file: "workers/synthesis.py"
+      tested_by:
+        - "python workers/synthesis.py"
+        - "python eval_trace.py --grading"
     input:
       question: string
       retrieval_result: retrieval worker output
@@ -32,6 +66,12 @@ workers:
       confidence: float from 0 to 1
     failure_behavior: Abstain when evidence is missing or confidence is too low.
 mcp_tools:
+  actual_implementation:
+    status: "implemented"
+    file: "mcp_server.py"
+    tested_by:
+      - "python mcp_server.py"
+      - "python workers/policy_tool.py"
   search_kb:
     input: query string
     output: matching chunks and sources

@@ -12,7 +12,8 @@ from typing import Any
 
 import graph
 
-ARTIFACTS = Path("artifacts")
+BASE_DIR = Path(__file__).resolve().parent
+ARTIFACTS = BASE_DIR / "artifacts"
 TRACES = ARTIFACTS / "traces"
 
 GRADING_QUESTIONS = [

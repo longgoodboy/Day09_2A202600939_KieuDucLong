@@ -13,10 +13,10 @@
     "mcp_tools_used": [],
     "confidence": 0.0,
     "hitl_triggered": true,
-    "timestamp": "2026-06-09T12:51:57.068426+00:00"
+    "timestamp": "2026-06-09T16:31:29.043507+00:00"
   },
   "trace": {
-    "timestamp": "2026-06-09T12:51:57.068426+00:00",
+    "timestamp": "2026-06-09T16:31:29.043507+00:00",
     "retrieval": {
       "worker": "retrieval_worker",
       "forced_abstain": true
